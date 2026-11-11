@@ -284,6 +284,58 @@ const loadingBar = document.getElementById("loading-bar");
 const loadingPercent = document.getElementById("loading-percent");
 
 // --------------------------------------------------------------------------
+// Subpage Video Warm-up
+// Downloads the PROJECT / SKILL / ABOUT / CONTACT background videos in the
+// background once the main menu is running, and swaps them in as in-memory
+// blobs, so each page's video plays instantly when the page is opened.
+// --------------------------------------------------------------------------
+// Menu order: 0 = Project, 1 = Skill, 2 = About, 3 = Contact
+const subpageVideoQueue = [slinkBgVideo, skillBgVideo, aboutBgVideo, contactBgVideo].filter(Boolean);
+let subpageVideosPreloadStarted = false;
+
+// Move a video to the front of the queue (used when its menu item is highlighted)
+function prioritizeSubpageVideo(video) {
+  const i = subpageVideoQueue.indexOf(video);
+  if (i > 0) {
+    subpageVideoQueue.splice(i, 1);
+    subpageVideoQueue.unshift(video);
+  }
+}
+
+async function preloadSubpageVideos() {
+  if (subpageVideosPreloadStarted) return;
+  subpageVideosPreloadStarted = true;
+
+  // Respect data-saver / very slow connections
+  const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  if (conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || ""))) return;
+  if (!window.fetch || !window.URL || !URL.createObjectURL) return;
+
+  while (subpageVideoQueue.length > 0) {
+    const video = subpageVideoQueue.shift();
+    const sourceEl = video.querySelector("source");
+    const url = (sourceEl && sourceEl.src) || video.currentSrc || video.src;
+    if (!url || url.startsWith("blob:")) continue;
+
+    try {
+      const res = await fetch(url);
+      if (!res.ok) continue;
+      const blob = await res.blob();
+      // Only swap while the video is idle so playback is never interrupted.
+      // If it is already playing from the network, it keeps doing so.
+      if (video.paused && video.currentTime === 0) {
+        video.preload = "auto";
+        video.src = URL.createObjectURL(blob);
+        video.load();
+      }
+    } catch (err) {
+      // Keep the normal network source as a fallback
+      console.warn("Subpage video preload skipped:", err);
+    }
+  }
+}
+
+// --------------------------------------------------------------------------
 // 3. Low-Latency Audio Engine (Web Audio API + Audio Pools + HTML5 Fallbacks)
 // --------------------------------------------------------------------------
 let audioCtx = null;
@@ -603,11 +655,17 @@ function setIndex(index) {
     sideNumber.textContent = (selectedIndex + 1).toString().padStart(2, "0");
   }
 
-  // Speculatively preload the selected subpage's video just in time
-  if (index === 0 && slinkBgVideo && slinkBgVideo.preload !== "auto") slinkBgVideo.preload = "auto";
-  else if (index === 1 && skillBgVideo && skillBgVideo.preload !== "auto") skillBgVideo.preload = "auto";
-  else if (index === 2 && aboutBgVideo && aboutBgVideo.preload !== "auto") aboutBgVideo.preload = "auto";
-  else if (index === 3 && contactBgVideo && contactBgVideo.preload !== "auto") contactBgVideo.preload = "auto";
+  // Prioritize the highlighted item's subpage video
+  const highlightedVideo = [slinkBgVideo, skillBgVideo, aboutBgVideo, contactBgVideo][index];
+  if (highlightedVideo) {
+    if (subpageVideosPreloadStarted) {
+      // Background warm-up is already running: just move this video up the queue
+      prioritizeSubpageVideo(highlightedVideo);
+    } else if (highlightedVideo.preload !== "auto") {
+      // Warm-up hasn't started yet (very early navigation): give it a head start
+      highlightedVideo.preload = "auto";
+    }
+  }
 
   for (let idx = 0; idx < cachedOptionItems.length; idx++) {
     const item = cachedOptionItems[idx];
@@ -1298,6 +1356,9 @@ function switchToLoopVideo() {
   if (hasSwitchedToLoop) return;
   hasSwitchedToLoop = true;
 
+  // Main menu loop is running: now warm up the subpage videos in the background
+  setTimeout(preloadSubpageVideos, 400);
+
   if (bgVideoLoop) {
     if (bgVideoLoop.preload !== "auto") bgVideoLoop.preload = "auto";
     bgVideoLoop.currentTime = 0;
@@ -1436,6 +1497,9 @@ function enterExperience() {
   if (menuColumn) menuColumn.classList.add("menu-entered");
   const menuProfileHeader = document.getElementById("menu-profile-header");
   if (menuProfileHeader) menuProfileHeader.classList.add("menu-entered");
+
+  // Safety net: start the subpage video warm-up even if the intro->loop switch never fires
+  setTimeout(preloadSubpageVideos, 9000);
 
   if (bgVideoIntro) {
     if (bgVideoIntro.preload !== "auto") bgVideoIntro.preload = "auto";
