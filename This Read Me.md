@@ -1,7 +1,5 @@
 # Nota
 
-A Wayland terminal emulator written in Zig.
-
 <p align="center">
   <img src="assets/showcase.gif" alt="Showcase" />
 </p>
