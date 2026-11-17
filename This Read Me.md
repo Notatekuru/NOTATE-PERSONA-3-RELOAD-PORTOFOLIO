@@ -1,4 +1,4 @@
-# zinc
+# Nota
 
 A Wayland terminal emulator written in Zig.
 
