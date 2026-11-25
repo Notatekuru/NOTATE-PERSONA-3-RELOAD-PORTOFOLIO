@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/favicon.png" alt=">NOTATE-PERSONA-3-RELOAD Logo" width="200"/>
+  <img src="assets/favicon.png" alt="NOTATE-PERSONA-3-RELOAD Logo" width="200"/>
 </p>
 
 <h1 align="center">NOTATE-PERSONA-3-RELOAD-PORTOFOLIO</h1>
@@ -32,7 +32,8 @@
 
 Built on a **pluggable architecture**, lets you select database engines (SQLite/PostgreSQL), media storage backends (Local/S3), and an optional Redis (queue, rate limits, WebSocket fan-out) through configuration rather than application-code changes. The storage backend is the live store for status media and, when chat-media archiving is enabled, archived chat media; other message media is returned inline to API and webhook consumers. Of the media, `scripts/backup.sh` archives only the local media directory, so an S3 bucket needs a backup of its own.
 
+## 📝 Documentation Update
 
-<sub>Made with ❤️ by <a href="(https://github.com/Notatekuru)">Notatekurusama</a>
+This section records a documentation improvement to make repository updates easier to track. Future changes to this portfolio can be documented here.
 
-</div>
+<sub>Made with ❤️ by <a href="https://github.com/Notatekuru">Notatekurusama</a></sub>
