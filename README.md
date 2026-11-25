@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="docs/logo/openwa_logo.webp" alt="OpenWA Logo" width="200"/>
+  <img src="assets/favicon.png" alt=">NOTATE-PERSONA-3-RELOAD Logo" width="200"/>
 </p>
 
-<h1 align="center">OpenWA</h1>
+<h1 align="center">NOTATE-PERSONA-3-RELOAD-PORTOFOLIO</h1>
 <p align="center">
-  <strong>Open Source WhatsApp API Gateway</strong>
+  <strong>This Is My PortoFolio</strong>
 </p>
 
 <p align="center">
