@@ -1,39 +1,102 @@
 <p align="center">
-  <img src="assets/favicon.png" alt="NOTATE-PERSONA-3-RELOAD Logo" width="200"/>
+  <img src="assets/favicon.png" alt="NOTATE-PERSONA-3-RELOAD logo" width="160"/>
 </p>
 
 <h1 align="center">NOTATE-PERSONA-3-RELOAD-PORTOFOLIO</h1>
+
 <p align="center">
-  <strong>This Is My PortoFolio</strong>
+  An interactive developer portfolio inspired by the visual language of <em>Persona 3 Reload</em>.
 </p>
 
 <p align="center">
-  <a href="#-features">Features</a> •
-  <a href="#-quick-start">Quick Start</a> •
-  <a href="#-documentation">Docs</a> •
-  <a href="#-api-examples">API</a> •
-  <a href="#-contributing">Contributing</a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/rmyndharis/OpenWA/actions/workflows/ci.yml"><img src="https://github.com/rmyndharis/OpenWA/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI"/></a>
-  <img src="https://img.shields.io/github/package-json/v/rmyndharis/OpenWA?label=version&color=blue" alt="Version"/>
-  <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"/>
-  <img src="https://img.shields.io/badge/node-22_LTS-brightgreen.svg" alt="Node"/>
-  <img src="https://img.shields.io/github/package-json/dependency-version/rmyndharis/OpenWA/@nestjs/core?label=NestJS&color=red" alt="NestJS"/>
-  <img src="https://img.shields.io/badge/docker-ready-blue.svg" alt="Docker"/>
-  <img src="https://img.shields.io/github/package-json/dependency-version/rmyndharis/OpenWA/dev/typescript?label=TypeScript&color=3178C6" alt="TypeScript"/>
-  <a href="https://buymeacoffee.com/rmyndharis"><img src="https://img.shields.io/badge/Buy_Me_a_Coffee-support-FFDD00?logo=buymeacoffee&logoColor=black" alt="Buy Me a Coffee"/></a>
+  <a href="#overview">Overview</a> •
+  <a href="#features">Features</a> •
+  <a href="#technology">Technology</a> •
+  <a href="#run-locally">Run locally</a> •
+  <a href="#controls">Controls</a> •
+  <a href="#contributing">Contributing</a>
 </p>
 
 ---
 
-## ✨ What About My PortoFolio in This Repositories?
+## Overview
 
-Built on a **pluggable architecture**, lets you select database engines (SQLite/PostgreSQL), media storage backends (Local/S3), and an optional Redis (queue, rate limits, WebSocket fan-out) through configuration rather than application-code changes. The storage backend is the live store for status media and, when chat-media archiving is enabled, archived chat media; other message media is returned inline to API and webhook consumers. Of the media, `scripts/backup.sh` archives only the local media directory, so an S3 bucket needs a backup of its own.
+This repository contains a desktop-oriented portfolio experience built around a recreation of the *Persona 3 Reload* pause-menu aesthetic. It presents projects, technical skills, profile information, and contact details through animated menu screens and interactive panels.
 
-## 📝 Documentation Update
+The interface is implemented as a static front-end website. It does not require a Node.js package installation or a backend service to preview.
 
-This section records a documentation improvement to make repository updates easier to track. Future changes to this portfolio can be documented here.
+## Features
 
-<sub>Made with ❤️ by <a href="https://github.com/Notatekuru">Notatekurusama</a></sub>
+- **Animated main menu** with angled menu items and a loading screen.
+- **Project showcase** with selectable project cards and detail panels.
+- **Skills screen** organized into Frontend, Backend, AI & ML, and Languages categories.
+- **About screen** with profile information and a short developer introduction.
+- **Contact screen** with an email contact link.
+- **Visual effects** including video backgrounds, page transitions, custom typography, and interface sound effects.
+- **Keyboard interaction** for navigating and controlling the menu.
+- **Desktop-first layout** with a notice displayed on smaller screens.
+
+## Technology
+
+The project uses browser-native technologies:
+
+- HTML5 for page structure and content.
+- CSS3 for layout, animation, typography, and visual effects.
+- Vanilla JavaScript (ES6+) for menu state, navigation, and interactions.
+- HTML video and audio elements for background footage and sound effects.
+
+No framework or build tool is required for the current static implementation.
+
+## Run locally
+
+1. Clone or download this repository.
+2. Open a terminal in the project directory.
+3. Start a local static web server:
+
+   ```bash
+   python -m http.server 8000
+   ```
+
+4. Open [http://localhost:8000](http://localhost:8000) in a desktop browser.
+
+You can also use another static file server or a code editor's live-preview extension. Running through a local server is recommended so that media and other assets load consistently.
+
+## Controls
+
+The interface displays its available controls on screen. The primary controls are:
+
+| Key | Action |
+| --- | --- |
+| `Enter` | Confirm the selected menu item |
+| `Esc` | Close the current panel or return to the previous screen |
+| `F` | Toggle fullscreen |
+
+Some screens may provide additional on-screen buttons for navigation.
+
+## Project structure
+
+The main entry point and key assets are organized as follows:
+
+- `index.html` — page markup and screen structure.
+- `css/style.css` — visual styling, responsive rules, and animations.
+- `js/main.js` — menu data, screen navigation, and interactive behavior.
+- `assets/` — images, icons, and video backgrounds.
+- `sfx/` — interface sound effects.
+- `fonts/` — local typefaces used by the design.
+
+## Contributing
+
+Suggestions and improvements are welcome. To contribute:
+
+1. Create a branch for your change.
+2. Make a focused improvement, such as correcting documentation, improving accessibility, or fixing an interaction.
+3. Test the affected screen in a desktop browser.
+4. Open a pull request describing what changed and how it was checked.
+
+For collaborative changes, contributors should review the actual diff together and make sure commit attribution reflects the people who genuinely contributed.
+
+---
+
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/Notatekuru">Notatekuru</a>
+</p>
