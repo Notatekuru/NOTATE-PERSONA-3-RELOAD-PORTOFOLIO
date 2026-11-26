@@ -14,6 +14,7 @@
   <a href="#technology">Technology</a> •
   <a href="#run-locally">Run locally</a> •
   <a href="#controls">Controls</a> •
+  <a href="#troubleshooting">Troubleshooting</a> •
   <a href="#contributing">Contributing</a>
 </p>
 
@@ -95,16 +96,41 @@ The main entry point and key assets are organized as follows:
 - `sfx/` — interface sound effects.
 - `fonts/` — local typefaces used by the design.
 
+## Troubleshooting
+
+- **Media or images do not load:** Start the server from the repository root so paths such as `assets/bg-loop.mp4` resolve correctly.
+- **The local address cannot be opened:** Confirm that the server is still running. If port `8000` is already in use, start the server with another port, for example `python -m http.server 8080`, then open `http://localhost:8080`.
+- **The page looks incomplete after editing:** Refresh the browser and check the developer console for missing files or JavaScript errors.
+- **The layout shows the small-screen notice:** This portfolio is designed for desktop-sized screens; open it in a desktop browser or widen the browser window.
+
+## SEO and canonical metadata
+
+When updating the page metadata in `index.html`, keep the page title, description, favicon, and theme color consistent with the portfolio.
+
+- Add a `rel="canonical"` link only when the portfolio has a stable, preferred public URL.
+- The canonical URL must point to this project’s actual deployed page, not to an unrelated repository, demo, or previous project.
+- If the correct public URL is unknown or the deployment address may change, leave the canonical link out rather than publishing a misleading URL.
+- After changing metadata, inspect the rendered page source and verify that every metadata URL belongs to this portfolio.
+
+This guidance follows the metadata cleanup in [PR #7](https://github.com/Notatekuru/NOTATE-PERSONA-3-RELOAD-PORTOFOLIO/pull/7), which removed a canonical URL that pointed to a different project.
+
 ## Contributing
 
 Suggestions and improvements are welcome. To contribute:
 
-1. Create a branch for your change.
+1. Create a branch for your change, using a descriptive name such as `docs/update-readme` or `fix/menu-navigation`.
 2. Make a focused improvement, such as correcting documentation, improving accessibility, or fixing an interaction.
-3. Test the affected screen in a desktop browser.
-4. Open a pull request describing what changed and how it was checked.
+3. Test the affected screen in a desktop browser and check that existing behavior still works.
+4. Open a pull request with a clear summary, the reason for the change, and the checks you performed.
+5. Review feedback, make any requested updates, and keep the pull request focused on one topic.
 
-For collaborative changes, contributors should review the actual diff together and make sure commit attribution reflects the people who genuinely contributed.
+### Working together
+
+- Discuss the goal and split the work before editing the same files.
+- Review the actual diff together before merging; comments and reviews should describe feedback that was genuinely provided.
+- If two people make a shared change, both should contribute substantively to that same change and agree on the final result.
+- Credit contributors accurately. A Git commit can identify one author and additional co-authors; add a `Co-authored-by` trailer only when the named person genuinely contributed to that commit and the email is associated with their GitHub account.
+- Merge through a pull request so the change and its discussion remain visible in the repository history.
 
 ---
 
