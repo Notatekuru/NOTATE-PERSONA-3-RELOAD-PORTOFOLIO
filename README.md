@@ -103,6 +103,17 @@ The main entry point and key assets are organized as follows:
 - **The page looks incomplete after editing:** Refresh the browser and check the developer console for missing files or JavaScript errors.
 - **The layout shows the small-screen notice:** This portfolio is designed for desktop-sized screens; open it in a desktop browser or widen the browser window.
 
+## SEO and canonical metadata
+
+When updating the page metadata in `index.html`, keep the page title, description, favicon, and theme color consistent with the portfolio.
+
+- Add a `rel="canonical"` link only when the portfolio has a stable, preferred public URL.
+- The canonical URL must point to this project’s actual deployed page, not to an unrelated repository, demo, or previous project.
+- If the correct public URL is unknown or the deployment address may change, leave the canonical link out rather than publishing a misleading URL.
+- After changing metadata, inspect the rendered page source and verify that every metadata URL belongs to this portfolio.
+
+This guidance follows the metadata cleanup in [PR #7](https://github.com/Notatekuru/NOTATE-PERSONA-3-RELOAD-PORTOFOLIO/pull/7), which removed a canonical URL that pointed to a different project.
+
 ## Contributing
 
 Suggestions and improvements are welcome. To contribute:
