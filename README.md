@@ -107,12 +107,19 @@ The main entry point and key assets are organized as follows:
 
 Suggestions and improvements are welcome. To contribute:
 
-1. Create a branch for your change.
+1. Create a branch for your change, using a descriptive name such as `docs/update-readme` or `fix/menu-navigation`.
 2. Make a focused improvement, such as correcting documentation, improving accessibility, or fixing an interaction.
-3. Test the affected screen in a desktop browser.
-4. Open a pull request describing what changed and how it was checked.
+3. Test the affected screen in a desktop browser and check that existing behavior still works.
+4. Open a pull request with a clear summary, the reason for the change, and the checks you performed.
+5. Review feedback, make any requested updates, and keep the pull request focused on one topic.
 
-For collaborative changes, contributors should review the actual diff together and make sure commit attribution reflects the people who genuinely contributed.
+### Working together
+
+- Discuss the goal and split the work before editing the same files.
+- Review the actual diff together before merging; comments and reviews should describe feedback that was genuinely provided.
+- If two people make a shared change, both should contribute substantively to that same change and agree on the final result.
+- Credit contributors accurately. A Git commit can identify one author and additional co-authors; add a `Co-authored-by` trailer only when the named person genuinely contributed to that commit and the email is associated with their GitHub account.
+- Merge through a pull request so the change and its discussion remain visible in the repository history.
 
 ---
 
