@@ -14,6 +14,7 @@
   <a href="#technology">Technology</a> •
   <a href="#run-locally">Run locally</a> •
   <a href="#controls">Controls</a> •
+  <a href="#troubleshooting">Troubleshooting</a> •
   <a href="#contributing">Contributing</a>
 </p>
 
@@ -94,6 +95,13 @@ The main entry point and key assets are organized as follows:
 - `assets/` — images, icons, and video backgrounds.
 - `sfx/` — interface sound effects.
 - `fonts/` — local typefaces used by the design.
+
+## Troubleshooting
+
+- **Media or images do not load:** Start the server from the repository root so paths such as `assets/bg-loop.mp4` resolve correctly.
+- **The local address cannot be opened:** Confirm that the server is still running. If port `8000` is already in use, start the server with another port, for example `python -m http.server 8080`, then open `http://localhost:8080`.
+- **The page looks incomplete after editing:** Refresh the browser and check the developer console for missing files or JavaScript errors.
+- **The layout shows the small-screen notice:** This portfolio is designed for desktop-sized screens; open it in a desktop browser or widen the browser window.
 
 ## Contributing
 
