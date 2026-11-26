@@ -63,15 +63,26 @@ You can also use another static file server or a code editor's live-preview exte
 
 ## Controls
 
-The interface displays its available controls on screen. The primary controls are:
+The interface supports keyboard navigation. Controls are context-sensitive, so the same key can have a different action on different screens.
 
-| Key | Action |
-| --- | --- |
-| `Enter` | Confirm the selected menu item |
-| `Esc` | Close the current panel or return to the previous screen |
-| `F` | Toggle fullscreen |
+| Screen | Key | Action |
+| --- | --- | --- |
+| Main menu | `ArrowUp` / `W` | Move to the previous menu item |
+| Main menu | `ArrowDown` / `S` | Move to the next menu item |
+| Main menu | `Enter` / `Space` / `B` | Open the selected section |
+| Main menu | `F` | Toggle fullscreen |
+| Project list | `ArrowUp` / `W` | Select the previous project |
+| Project list | `ArrowDown` / `S` | Select the next project |
+| Project list | `Enter` / `Space` / `A` | Confirm the selected project |
+| Skills | `ArrowLeft` / `Q` | Show the previous skill category |
+| Skills | `ArrowRight` / `E` | Show the next skill category |
+| Contact | `ArrowUp` / `W` | Select the previous contact row |
+| Contact | `ArrowDown` / `S` | Select the next contact row |
+| Contact | `Enter` / `Space` | Activate the selected contact row |
+| Open subpage | `Esc` / `B` / `Backspace` | Return to the main menu |
+| Open modal | `Esc` / `A` | Close the modal |
 
-Some screens may provide additional on-screen buttons for navigation.
+The on-screen buttons remain available as alternatives to keyboard controls.
 
 ## Project structure
 
